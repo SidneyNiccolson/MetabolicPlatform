@@ -1,0 +1,10 @@
+package mypackage;
+
+//import Gui library
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class BioCascadeModeller {
+
+}

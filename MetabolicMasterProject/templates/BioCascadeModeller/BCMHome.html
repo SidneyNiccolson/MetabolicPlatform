@@ -1,0 +1,32 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+<!-- Uses the BCMbase.html for framework purposes-->
+        <!--this is the title of the page -->
+{% block title %}Sources for Nutrient Recovery{% endblock %}
+<!-- body block-->
+{% block body_block %}
+
+    <h1>BioCascade Modeller</h1>
+    <br>
+     Potential sources for nutrient recovery:
+        <!-- if there are values past from the view.-->
+    <p>{% if wastes  %}
+        <ul>
+    <!-- retrieve every value -->
+            {% for waste in wastes %}
+    <!-- show the name of the waste(value) along and make a link containing /BioC../category/<variable>-->
+    <!-- This variable is send to the view.details page and can be further used for database information retrieving-->
+            <li><a href="/BioCascadeModeller/category/{{ waste.id }}">{{ waste.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <strong>No wastes at present.</strong>
+        {% endif %}</p>
+
+{% endblock %}
+
+
+
+
+
+
+

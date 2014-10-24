@@ -1,0 +1,52 @@
+package mypackage;
+
+//import Gui library
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class BioCascadeModeller extends JFrame {
+	//create a panel
+	JPanel panel = new JPanel();
+
+	//buttons
+	JButton fw = new JButton("Food Waste");
+	JButton hw = new JButton("Human Waste");
+	//header of the 1st frame Gui
+	JLabel header = new JLabel("Potential Recyclable Source              ");
+	
+
+	
+	
+	// constructor
+	BioCascadeModeller() {
+		super("BioCascadeModeller v0.1");
+		setLayout(new FlowLayout(3));
+		panel.setOpaque(true);
+		panel.add(header);
+		
+		panel.setBackground(Color.gray);
+		add(panel);
+		add(fw);
+		add(hw);
+		
+	
+	}
+
+	
+
+	// main (first part of code thats is going to be runned)
+	public static void main(String[] args) {
+		// create an object of the BioCascadeModeller type
+		BioCascadeModeller bcm = new BioCascadeModeller();
+		// standard housekeeping
+		bcm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		bcm.setSize(250,400);
+		bcm.setVisible(true);
+		bcm.setResizable(false);
+		
+		
+		
+	}
+}

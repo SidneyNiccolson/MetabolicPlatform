@@ -1,0 +1,17 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+<!-- Uses the BCMbase.html for framework purposes-->
+        <!--this is the title of the page -->
+{% block title %} {{ wastes.name }} {% endblock %}
+
+<!-- body block-->
+{% block body_block %}
+       <h1>{{ wastes.name }} information page</h1>
+        <br>
+        <li>Description: </li>
+        <!-- border -->
+
+          {{ wastes.desc }}
+     
+
+
+{% endblock %}

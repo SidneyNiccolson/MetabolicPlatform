@@ -1,0 +1,80 @@
+package mypackage;
+import java.awt.*;
+
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+
+
+public class Test extends JFrame {
+  
+		
+	//create a combobox
+	private JComboBox upperbox;
+	private JList bottombox;
+	private JList countries = new JList();
+	//make string for the combobox
+	private static String[] filename = {"Single-Selection", "Single-interval-Selection", "multiple-interval"};
+	private static String[] country = {"UK", "US", "NL", "Surinam", "greece", "spain", "filipines", "china"} ;
+	
+	public Test(){
+		super("Title");
+		setLayout(new BorderLayout());
+		//put the string in the box
+		upperbox = new JComboBox(filename);
+		upperbox.setMaximumRowCount(0);
+		upperbox.setPreferredSize(new Dimension(50,50));
+		add(new JLabel("press enter each time\n something is selected"), BorderLayout.EAST);
+		add(upperbox, BorderLayout.NORTH);
+		
+		bottombox = new JList(country);
+		//put bottombox in scrollpane
+		add(new JScrollPane(bottombox), BorderLayout.CENTER);
+		add(countries, BorderLayout.SOUTH);
+		 //    an enter event on upperbox
+	   upperbox.addKeyListener(new KeyAdapter() {
+	    	public void keyPressed(KeyEvent e) {
+	    	switch (e.getKeyCode()) {
+	    			case KeyEvent.VK_ENTER: int test = upperbox.getSelectedIndex(); 
+	    			//check which option has been chosen
+	    			if(test==0){
+	    				bottombox.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    			}
+	    			else if(test==1){
+	    				bottombox.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+	    			}
+	    			else if(test==2){
+	    				bottombox.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+	    			}
+	    			break;
+	    				
+	    
+	  }
+	    	repaint();
+	    	}});
+	   //    an enter event on lowerbox
+	   bottombox.addKeyListener(new KeyAdapter() {
+	    	public void keyPressed(KeyEvent e) {
+	    	switch (e.getKeyCode()) {
+	    			case KeyEvent.VK_ENTER: 
+	    				countries.setListData(bottombox.getSelectedValues()); 
+	    			
+	    			break;
+	    				
+	    
+	  }
+	    	repaint();
+	    	}});
+	}
+	
+	public static void main(String[] args){
+		Test go = new Test();
+		go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		go.pack();
+		go.setVisible(true);
+	}
+}
+  
+    
+    

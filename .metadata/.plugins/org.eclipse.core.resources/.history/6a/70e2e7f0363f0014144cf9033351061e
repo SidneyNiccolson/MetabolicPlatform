@@ -1,0 +1,35 @@
+package mypackage;
+
+//import Gui library
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class HelloWorldGUI extends JFrame implements ActionListener{
+	
+	//main
+	public static void main(String[] args){
+		//create instants
+		HelloWorldGUI hwg = new HelloWorldGUI();
+	}
+	
+	//constructor
+	HelloWorldGUI(){
+		//set the frame to be visible
+		setVisible(true);
+		//center the frame
+		setLocationRelativeTo(null);
+		//set the size of the frame
+		setSize(400,200);
+		//
+		JLabel hello = new JLabel("Hello World!");
+		setLayout(new FlowLayout());
+		add(hello);
+	}
+	
+	//capture events like clicking
+	public void actionPerformed(ActionEvent e){
+		
+	}
+}

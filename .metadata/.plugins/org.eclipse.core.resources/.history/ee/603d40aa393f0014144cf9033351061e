@@ -1,0 +1,65 @@
+package mypackage;
+
+//import Gui library
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class HelloWorldGUI extends JFrame implements ActionListener {
+	// set a label to show
+	JLabel hello = new JLabel("Hello World!");
+	// create a button
+	JButton clickMe = new JButton("Click Me!");
+	JButton clickMe2 = new JButton("Click Me!");
+
+	// main
+	public static void main(String[] args) {
+		// create instants
+		HelloWorldGUI hwg = new HelloWorldGUI();
+
+	}
+
+	// constructor
+	HelloWorldGUI() {
+		// set the frame to be visible
+		setVisible(true);
+		// center the frame
+		setLocationRelativeTo(null);
+		// set the size of the frame
+		setSize(400, 200);
+		// set the layout of the frame
+		setLayout(new FlowLayout());
+		// add the label to the frame
+		add(hello);
+		// add the button
+		add(clickMe);
+		add(clickMe2);
+		// give a function to the button
+		clickMe.addActionListener(this);
+		clickMe2.addActionListener(this);
+	}
+
+	// capture events like clicking
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == clickMe) {
+			hello.setText(" first");
+		} else if (e.getSource() == clickMe2) {
+			hello.setText("second");
+		}
+	}
+	// background of the GUI
+		protected void paintComponent(Graphics g) {
+			super.paintComponents(g);
+
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
+					RenderingHints.VALUE_RENDER_QUALITY);
+			int w = getWidth();
+			int h = getHeight();
+			Color color1 = new Color(237, 237, 237);
+			Color color2 = Color.GRAY;
+			GradientPaint gp = new GradientPaint(0, 0, color2, 0, h, color1);
+			g2d.setPaint(gp);
+			g2d.fillRect(0, 0, w, h);
+		}
+}
