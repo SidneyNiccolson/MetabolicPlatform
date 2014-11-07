@@ -8,10 +8,58 @@
        <h1>{{ wastes.name }} information page</h1>
         <br>
         <li>Description: </li>
-        <!-- border -->
+
 
           {{ wastes.desc }}
-     
+        <br>
+        <br>
+        <li>Detailed information: </li>
+        <!-- code for expanding and hiding (test phase)-->
+         <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bar').on('show', function () {
+        //$('#bar').html('this is a test');
+        $('#bar').load('/echo/js/?delay=2&js=this_is_a_test');
+});
+        });
+    </script>
+
+<a data-target="#bar" data-toggle="collapse">Click to load</a>
+<div id="bar" class="collapse">
+<!-- display some parameters that are tied to the specific wastes -->
+    {% for wasteparameters in waste.wasteparameters_set.all %}
+    <h4>{{ wasteparameters.parameters }} </h4>
+    {{ wasteparameters.quantity }} {{ wasteparameters.parameters.unit }} <br> Type: {{ wasteparameters.parameters.type }}
+    <!-- dropdown for extra information on nutrients or other types -->
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ wasteparameters.parameters }} description <strong class="caret"></strong></a>
+        <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+            {{ wasteparameters.parameters.desc }}
+            </form>
+            <br>
+            <br>
+        </div>
+    </li>
+
+    <br>
+    {% endfor %}
+
+
+
+
+</div>
+
+
+
+        <br>
+        <br>
+        <li>Find out which treatment technologies are available for {{ wastes.name }}:</li>
+       <form action="/BioCascadeModeller/category/{{ wastes.id }}/treatment_tech">
+
+    <input type="submit" value="Treatment Technologies">
+</form>
+
 
 
 {% endblock %}
+

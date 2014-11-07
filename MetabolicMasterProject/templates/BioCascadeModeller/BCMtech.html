@@ -1,0 +1,38 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+<!-- Uses the BCMbase.html for framework purposes-->
+        <!--this is the title of the page -->
+
+{% block title %} {{ wastes.name }} - Treatment Technologies {% endblock %}
+
+<!-- body block-->
+{% block body_block %}
+
+       <h1>{{ wastes.name }} Treatment Technologies</h1>
+        <br>
+
+            {% if treatments %}
+
+    <!-- retrieve every value -->
+            {% for treat in treatments %}
+    <!-- show the name of the treatment technologies-->
+
+            <li>{{ treat.name }}
+            <br> {{ treat.desc }}
+
+
+            </li>
+
+
+
+
+            {% endfor %}
+        </ul>
+        {% else %}
+        <strong>No treatment technologies at present.</strong>
+        {% endif %}</p>
+
+        </li>
+
+
+
+{% endblock %}
