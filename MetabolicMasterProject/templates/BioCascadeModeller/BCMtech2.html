@@ -1,0 +1,49 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+<!-- Uses the BCMbase.html for framework purposes-->
+
+{% block title %}  {{ treatment.name }} {% endblock %}
+
+        <!-- body block-->
+{% block body_block %}
+
+    <h1>{{ treatment.name }}</h1>
+    <br>
+
+
+    {% if treatment %}
+
+            <h3>Description:</h3>
+            {{ treatment.desc }} <br> <br> <center><img src=" {{ treatment.image2 }} " alt="Error: Picture could not be found"></center>
+
+
+            <br>
+
+
+            <br>
+            <h3>Technical specification - operation conditions:</h3>
+            {{ treatment.tech_spec }}
+
+            <h3>Products: </h3> {{  treatment.products }} <br>
+            <h3>Byproducts: </h3>  {{ treatment.byproducts }} <br> </a></li>
+
+
+             <!-- show  some info from database -->
+             Click on the button below to start calculating how much nutrient can be recovered:
+             <form action="/BioCascadeModeller/{{ wastes.id }}/treatment_tech/{{ treatment.id }}_Modelling">
+
+    <input type="submit" value="Model with {{ treatment.name }} ">
+</form>
+
+        </ul>
+    {% else %}
+        <strong>No treatment technologies at present.</strong>
+    {% endif %}</p>
+
+
+
+
+
+
+
+
+{% endblock %}

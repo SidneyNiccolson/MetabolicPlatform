@@ -16,3 +16,26 @@ padding: 9px 0;
 
     }
 }
+
+/*custom stuff down here */
+/* sizes */
+#main-wrap > div { min-height: 450px; }
+
+
+
+/* layout */
+#main-wrap {
+    /* overflow to handle inner floating block */
+    overflow: hidden;
+}
+
+#sidebar {
+    float: left;
+    width: 50%;
+}
+
+#content-wrap {
+    float: right;
+    width: 50%;
+}
+

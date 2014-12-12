@@ -1,0 +1,39 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+{% load app_filters %}
+{% load static %}
+<!-- Uses the BCMbase.html for framework purposes-->
+        <!--this is the title of the page -->
+{% block title %} Modelling with Struvite Reactor  {% endblock %}
+        {% block body_block %}
+        <h1>Modelling with Struvite Reactor </h1> <br>
+        <!--
+<center><img src="{% static 'StruviteBig.png' %}" alt="Picture of Metabolic workflow concept" /></center>
+-->
+        <br>
+
+        <li> <h3> Nutrient loss without nutrient extraction (concentrations based on average) :</h3> </li>
+<hr>
+
+<!-- display some parameters that are tied to the specific wastes -->
+    {% for wasteparameters in waste.wasteparameters_set.all %}
+
+    <h4>{{ wasteparameters.parameters }} </h4>
+   {{ values|lookup:forloop.counter0 }} {{ wasteparameters.parameters.unit }} <br> Type: {{ wasteparameters.parameters.type }}
+    <!-- dropdown (dropup) for extra information on nutrients or other types -->
+
+    </li>
+
+
+
+    <br>
+    {% endfor %}
+<hr>
+<form action="/BioCascadeModeller/{{ wastes.id }}/treatment_tech/{{ treatment_id }}_Modelling/results">
+
+    <input type="submit" value="Continue">
+</form>
+
+
+</div>
+
+{% endblock %}

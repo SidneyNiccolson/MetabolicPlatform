@@ -1,0 +1,23 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+<!-- Uses the BCMbase.html for framework purposes-->
+        <!--this is the title of the page -->
+{% block title %}{% endblock %}
+<!-- body block-->
+{% block body_block %}
+        <h1>About BioCascade Modeller</h1><br>
+<li>The BioCascadeModeller is both designed as a learning center and as a platform for BioCascade calculations. In short the BioCascadeModeller application lets users learn about nutrients and other valuable molecules that are mainly lossed through the current waste treatment system.
+    The application shows alternative treatment technologies that can be more sustainable and less energy intensive. Also calculations can be done based on waste amounts to estimate how much valuable nutrients can actually be recovered with these technologies. </li>
+       <br>
+      <li> Data on waste and treatment technologies are stored in a PostGresQl database. In the future additional waste and treatment technologies can be added by expert users. Each data entry is called by the application at a specific time that the user wants to learn on that specific entry. Below a schematic representation of the most important part of the database:
+        <br>
+          <center><img src="/static/dbimage.png" alt="Picture of PostGresQL database" /></center>
+          </li>
+        <h3> Database tables (technical details)</h3>
+        <li>BioCascadeModeller_waste: This table consists of all waste kinds implemented in the application e.g. Grey Water. Each instance has a simple name and description. However this table has a many to many relationship with the column Parameters.  </li>
+        <li>BioCascadeModeller_parameters: The Parameters column contains all the nutrients,pathogens and trace elements. </li>
+        <li>BioCascadeModeller_wasteparameters: This table is the link between the Waste table and the Parameters table. WasteParameters contains information on quantities of specific nutrient, pathogens and trace elements. </li>
+        <li>BioCascadeModeller_treatmenttech: The Treatmenttech table contains all the treatment technologies available e.g. Struvite Reactor. This is linked with waste kind through another many to many relationship.</li>
+        <li>BioCascadeModeller_treatmenttech_waste: Treatmenttech_waste is the table that links different waste kinds with different treatment technologies. </li>
+
+
+{% endblock %}

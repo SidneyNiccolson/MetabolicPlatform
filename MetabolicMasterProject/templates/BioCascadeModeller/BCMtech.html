@@ -7,31 +7,28 @@
 <!-- body block-->
 {% block body_block %}
 
-       <h1>{{ wastes.name }} Treatment Technologies</h1>
-        <br>
-
-            {% if treatments %}
-
-    <!-- retrieve every value -->
-            {% for treat in treatments %}
-    <!-- show the name of the treatment technologies-->
-
-            <li>{{ treat.name }}
-            <br> {{ treat.desc }}
+    <h1>{{ wastes.name }} Treatment Technologies</h1>
+    <br>
 
 
-            </li>
+    {% if treatments %}
 
+        <!-- retrieve every value -->
+        {% for treat in treatments %}
+        <!-- show the name of the treatment technologies-->
 
-
-
-            {% endfor %}
+            <li><a href="/BioCascadeModeller/{{ wastes.id }}/treatment_tech/{{ treat.id }}">{{ treat.name }}</a></li>
+            {{ treat.summary }}
+        {% endfor %}
         </ul>
-        {% else %}
+    {% else %}
         <strong>No treatment technologies at present.</strong>
-        {% endif %}</p>
+    {% endif %}</p>
 
-        </li>
+
+
+
+
 
 
 

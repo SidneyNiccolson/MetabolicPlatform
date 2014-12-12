@@ -1,0 +1,48 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+{% load static %}
+<!-- Uses the BCMbase.html for framework purposes-->
+        <!--this is the title of the page -->
+{% block title %}Struvite Reactor Results with Yellow Water{% endblock %}
+<!-- body block-->
+{% block body_block %}
+        <h1>Struvite Reactor Results with Yellow Water</h1>
+        <br>
+        <li><h3>Assumptions:</h3></li>
+
+         I: One person will produces 1.4 Liter of urine on average a day. <br>
+         II: 0.8 grams of magnesium per liter of urine is needed for the struvite reactor.<br>
+         III: 90% of phosphorus can be recovered with the struvite reactor.<br>
+
+        <li><h3>Daily nutrient recovery rate:</h3></li>
+        <hr>
+        <strong>Persons:</strong> {{ persons }} <br>
+        <strong>Average urine output:</strong> {{ average_urine_prod }} liters per day <br>
+        <strong>Amount of magnesium to be added to the struvite reactor:</strong> {{ needed_magnesium }} grams<br>
+        <strong>Amount of phosphorus recovery:</strong> {{ phosphorus_recovery }} grams <br>
+        <hr>
+        <li><h3>Annual nutrient recovery rate:</h3></li>
+        <hr>
+        <strong>Amount of magnesium to be added to the struvite reactor:</strong> {{ annual_needed_magnesium }} grams<br>
+        <strong>Amount of phosphorus recovery:</strong> {{ annual_phosphorus_recovery }} grams <br>
+        <hr>
+        <center><img src="{% static 'StruviteBig.png' %}" alt="Picture of struvite" /></center>
+        <li><h3>Foodprint (mockup):</h3></li>
+        <hr>
+        <strong>Co2 reduction rate: </strong> 200.000 tons per year
+        <center><img src="{% static 'co2mockup.png' %}" alt="Picture of co2mockup" /></center>
+        <hr>
+        <li><h3>Continue:</h3></li>
+        Add to cart: <br>
+        <button>Purchase</button> <br><br>
+        Save scenario to local hard disk: <br>
+        <button>Save</button>
+        <br><br>
+        Design another model flow: <br>
+        <form action="/BioCascadeModeller/">
+        <input type="submit" value="Design">
+        </form>
+        Process effluent with other treatment technologies:
+        <form action="/BioCascadeModeller/effluentmockup">
+        <input type="submit" value="Continue processing">
+        </form>
+{% endblock %}

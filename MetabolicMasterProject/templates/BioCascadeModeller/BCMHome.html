@@ -1,4 +1,5 @@
 {% extends 'BioCascadeModeller/BCMbase.html' %}
+{% load static %}
 <!-- Uses the BCMbase.html for framework purposes-->
         <!--this is the title of the page -->
 {% block title %}Sources for Nutrient Recovery{% endblock %}
@@ -7,20 +8,39 @@
 
     <h1>BioCascade Modeller</h1>
     <br>
-     Potential sources for nutrient recovery:
+    <h3>Potential sources for nutrient recovery:</h3>
+       <br>
         <!-- if there are values past from the view.-->
     <p>{% if wastes  %}
-        <ul>
+
+        <div id="main-wrap">
+    <div id="sidebar"><img src="{% static 'BCMhome.png' %}" alt="Picture of Metabolic workflow concept" /></div>
+    <div id="content-wrap">
+       <ul>
+            <br><br><br><br>
+
+
     <!-- retrieve every value -->
             {% for waste in wastes %}
-    <!-- show the name of the waste(value) along and make a link containing /BioC../category/<variable>-->
+    <!-- show the name of the waste(value) along and make a link containing /BioC../<variable>-->
     <!-- This variable is send to the view.details page and can be further used for database information retrieving-->
-            <li><a href="/BioCascadeModeller/category/{{ waste.id }}">{{ waste.name }}</a></li>
+
+        <h2><a href="/BioCascadeModeller/{{ waste.id }}">{{ waste.name }}</a></h2>
+
+    <!--
+    <li><a href="/BioCascadeModeller/{{ waste.id }}">{{ waste.name }}</a></li> -->
             {% endfor %}
-        </ul>
+
+   </ul>
         {% else %}
         <strong>No wastes at present.</strong>
-        {% endif %}</p>
+        {% endif %}
+
+    </div>
+</div>
+
+
+
 
 {% endblock %}
 

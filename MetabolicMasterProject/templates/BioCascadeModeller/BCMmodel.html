@@ -1,0 +1,16 @@
+{% extends 'BioCascadeModeller/BCMbase.html' %}
+<!-- Uses the BCMbase.html for framework purposes-->
+        <!--this is the title of the page -->
+{% block title %} Modelling with Struvite Reactor  {% endblock %}
+        {% block body_block %}
+        <h1>Modelling with Struvite Reactor </h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    How many persons reside within your household or office? <br>
+    {{ form }}
+
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

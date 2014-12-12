@@ -5,15 +5,16 @@
 
 <!-- body block-->
 {% block body_block %}
-       <h1>{{ wastes.name }} information page</h1>
+       <h1>{{ wastes.name }} Information Page - Learning Center</h1>
         <br>
-        <li>Description: </li>
+        <li><h3>Description: </h3></li>
 
 
           {{ wastes.desc }}
+        <center><img src=" {{ wastes.imageWaste }} " alt="Error: Picture could not be found"></center>
         <br>
         <br>
-        <li>Detailed information: </li>
+        <li> <h3> {{ wastes.name }} detailed information and flow rate (concentrations based on average/per person/per day) :</h3> </li>
         <!-- code for expanding and hiding (test phase)-->
          <script type="text/javascript">
         $(document).ready(function () {
@@ -30,16 +31,17 @@
     {% for wasteparameters in waste.wasteparameters_set.all %}
     <h4>{{ wasteparameters.parameters }} </h4>
     {{ wasteparameters.quantity }} {{ wasteparameters.parameters.unit }} <br> Type: {{ wasteparameters.parameters.type }}
-    <!-- dropdown for extra information on nutrients or other types -->
-    <li class="dropdown">
+    <!-- dropdown (dropup) for extra information on nutrients or other types -->
+    <li class="dropup">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ wasteparameters.parameters }} description <strong class="caret"></strong></a>
         <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
             {{ wasteparameters.parameters.desc }}
+
             </form>
-            <br>
-            <br>
+
         </div>
     </li>
+
 
     <br>
     {% endfor %}
@@ -53,8 +55,9 @@
 
         <br>
         <br>
-        <li>Find out which treatment technologies are available for {{ wastes.name }}:</li>
-       <form action="/BioCascadeModeller/category/{{ wastes.id }}/treatment_tech">
+
+        <li><h3> Find out which treatment technologies are available for {{ wastes.name }}: </h3></li>
+       <form action="/BioCascadeModeller/{{ wastes.id }}/treatment_tech">
 
     <input type="submit" value="Treatment Technologies">
 </form>

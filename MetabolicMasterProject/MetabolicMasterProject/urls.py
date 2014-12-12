@@ -1,9 +1,9 @@
 from django.conf.urls import patterns, include, url
-from BioCascadeModeller import views
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-from MetabolicMasterProject import views
+import views
 
 urlpatterns = patterns('',
     # Examples:
@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.homePage, name='homePage'),
+    url(r'^about/', views.about, name='about'),
     url(r'^BioCascadeModeller/', include('BioCascadeModeller.urls'),
+
 
 ))
